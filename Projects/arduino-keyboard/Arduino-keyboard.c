@@ -211,6 +211,22 @@ bool CALLBACK_HID_Device_CreateHIDReport(
             keyboardData[ind] = RingBuffer_Remove(&USARTtoUSB_Buffer);
 	    }
 
+        // check for handshake request and answer if found
+	    for (ind=0; ind<6; ind++) {
+            if (
+                    keyboardData[ind] == 0xE0
+                    && keyboardData[ind+1] == 0x01
+                    && keyboardData[ind+2] == 0xE0
+               ) {
+                Serial_TxByte(0xEF);
+                Serial_TxByte(0x01);
+                Serial_TxByte(0xEF);
+                keyboardData[ind] = 0;
+                keyboardData[ind+1] = 0;
+                keyboardData[ind+2] = 0;
+            }
+        }
+
 	    /* Send an led status byte back for every keyboard report received */
 	    Serial_TxByte(ledReport);
 	}
@@ -251,3 +267,4 @@ ISR(USART1_RX_vect, ISR_BLOCK)
 	if (USB_DeviceState == DEVICE_STATE_Configured)
 	  RingBuffer_Insert(&USARTtoUSB_Buffer, ReceivedByte);
 }
+

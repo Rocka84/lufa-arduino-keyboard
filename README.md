@@ -1,6 +1,16 @@
+# LUFA arduino keyboard firmware
 
-                   _   _ _ ___ _  
-                  | | | | | __/ \ 
+This repo was made to be able to build [darran's Arduino USB Keyboard Firmware](https://web.archive.org/web/20120122114237/http://hunt.net.nz/users/darran/weblog/b3029/Arduino_UNO_Keyboard_HID_version_03.html)
+from source.
+
+See [Projects/arduino-keyboard](Projects/arduino-keyboard).
+
+The version of LUFA this uses is _way outdated!_ So don't use it for other stuff. Anyways, here's the original readme.txt
+
+
+
+                   _   _ _ ___ _
+                  | | | | | __/ \
                   | |_| U | _| o | - The Lightweight USB
                   |___|___|_||_n_|    Framework for AVRs
                 =========================================
@@ -10,7 +20,7 @@
                  http://www.fourwalledcubicle.com/LUFA.php
                 =========================================
 
-               LUFA is donation supported. To support LUFA, 
+               LUFA is donation supported. To support LUFA,
              please donate at http://www.fourwalledcubicle.com.
 
                 For Commercial Licensing information, see
@@ -29,7 +39,7 @@ package in your chosen package management tool - under Ubuntu, this can be
 achieved by running the following command in the terminal:
 
    sudo apt-get install doxygen
-	
+
 Other package managers and distributions will have similar methods to
 install Doxygen. In Windows, you can download a prebuilt installer for
 Doxygen from its website, www.doxygen.org.

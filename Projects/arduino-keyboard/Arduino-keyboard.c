@@ -1,7 +1,7 @@
 /*
              LUFA Library
      Copyright (C) Dean Camera, 2010.
-              
+
   dean [at] fourwalledcubicle [dot] com
       www.fourwalledcubicle.com
 */
@@ -9,13 +9,13 @@
 /*
   Copyright 2010  Dean Camera (dean [at] fourwalledcubicle [dot] com)
 
-  Permission to use, copy, modify, distribute, and sell this 
+  Permission to use, copy, modify, distribute, and sell this
   software and its documentation for any purpose is hereby granted
-  without fee, provided that the above copyright notice appear in 
+  without fee, provided that the above copyright notice appear in
   all copies and that both that the copyright notice and this
-  permission notice and warranty disclaimer appear in supporting 
-  documentation, and that the name of the author not be used in 
-  advertising or publicity pertaining to distribution of the 
+  permission notice and warranty disclaimer appear in supporting
+  documentation, and that the name of the author not be used in
+  advertising or publicity pertaining to distribution of the
   software without specific, written prior permission.
 
   The author disclaim all warranties with regard to this
@@ -132,7 +132,7 @@ void SetupHardware(void)
 
 	/* Start the flush timer so that overflows occur rapidly to push received bytes to the USB interface */
 	TCCR0B = (1 << CS02);
-	
+
 	/* Pull target /RESET line high */
 	AVR_RESET_LINE_PORT |= AVR_RESET_LINE_MASK;
 	AVR_RESET_LINE_DDR  |= AVR_RESET_LINE_MASK;
@@ -142,7 +142,7 @@ void SetupHardware(void)
 	UCSR1A = 0;
 	UCSR1C = 0;
 
-	/* Special case 57600 baud for compatibility with the ATmega328 bootloader. */	
+	/* Special case 57600 baud for compatibility with the ATmega328 bootloader. */
 	UBRR1  = SERIAL_2X_UBBRVAL(9600);
 
 	UCSR1C = ((1 << UCSZ11) | (1 << UCSZ10));
@@ -208,7 +208,7 @@ bool CALLBACK_HID_Device_CreateHIDReport(
 
 	if (BufferCount >= 8) {
 	    for (ind=0; ind<8; ind++) {
-		keyboardData[ind] = RingBuffer_Remove(&USARTtoUSB_Buffer);
+            keyboardData[ind] = RingBuffer_Remove(&USARTtoUSB_Buffer);
 	    }
 
 	    /* Send an led status byte back for every keyboard report received */
